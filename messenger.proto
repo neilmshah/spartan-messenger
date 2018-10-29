@@ -1,0 +1,44 @@
+// Title: CMPE273-Assignment1
+// Description: proto file for Spartan Messenger char using gRPC in python3
+// By: Neil Shah
+
+syntax = "proto3";
+
+package messenger;
+
+service ChatServer {
+    rpc ChatResponseStream (SessionID) returns (stream ChatMessage) {}
+    rpc SendMessage (ChatMessage) returns (Status) {}
+    rpc Login(LoginRequest) returns (LoginResponse) {}
+    rpc GetChatHistory(SessionID) returns (stream ChatMessage) {}
+}
+
+message ChatMessage {
+    string id = 1;
+    string name = 2;
+    string message = 3;
+    bool readFlag = 4;
+}
+
+message Empty {}
+
+message Status {
+    string statusCode = 1;
+}
+
+message LoginRequest {
+    string sender = 1;
+    string receiver = 2;
+}
+
+message LoginResponse {
+    string connectionID = 1;
+}
+
+message SessionID {
+    string connectionID = 1;
+}
+
+
+
+

@@ -1,0 +1,5 @@
+Following are the dependencies that must be installed before running:
+
+grpc
+yaml
+pyCrypto
